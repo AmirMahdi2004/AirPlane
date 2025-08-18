@@ -1,0 +1,132 @@
+{% load static %}
+<html lang="fa">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>ستاره شمالی | خانه</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400&family=Ubuntu:wght:400;700&display=swap"
+          rel="stylesheet"/>
+    <style>
+        /* ---------- رنگ‌های پایه ---------- */
+        :root{
+            --navy-900:#0e1b2a;   /* بک‌گراند اصلی */
+            --navy-800:#14263b;   /* هدر/فوتر */
+            --navy-700:#1b3049;   /* کارت ویژگی‌ها */
+            --cyan-main:#74ebe6;  /* رنگ تأکیدی (مثل فرم‌های قبلی) */
+            --cyan-hover:#5fd8d2; /* هاور ملایم‌تر */
+        }
+
+        /* ---------- ریست مختصر ---------- */
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        html{direction:rtl;scroll-behavior:smooth}
+        body{
+            font-family:'Cabin','Arial',sans-serif;
+            background:var(--navy-900);
+            color:#fff;
+            line-height:1.6;
+        }
+        a{color:var(--cyan-main);text-decoration:none;transition:color .3s}
+        a:hover{color:var(--cyan-hover)}
+
+        /* ---------- Header ---------- */
+        header{
+            display:flex;justify-content:space-between;align-items:center;
+            background:var(--navy-800);padding:18px 8%;
+            border-bottom:2px solid var(--cyan-main);
+        }
+        .logo-box{display:flex;align-items:center;gap:10px}
+        .logo-box img{width:46px;height:46px;border-radius:50%;object-fit:cover}
+        .logo-box h1{font:700 22px/1 'Ubuntu';color:#fff;letter-spacing:.4px}
+        nav ul{display:flex;gap:25px;list-style:none}
+        nav li a{color:#fff;font-size:17px}
+
+        /* ---------- Hero ---------- */
+        .hero{
+            padding:110px 20px 90px;text-align:center;
+            background:radial-gradient(circle at center,var(--navy-800)0%,var(--navy-900)70%);
+        }
+        .hero h2{font:700 clamp(28px,6vw,44px)/1 'Ubuntu';margin-bottom:12px;color:#fff}
+        .hero p{font-size:19px;max-width:620px;margin:0 auto 28px}
+        .cta-btn{
+            display:inline-block;padding:14px 34px;border:2px solid var(--cyan-main);
+            color:#fff;border-radius:6px;font-size:17px;transition:.3s background
+        }
+        .cta-btn:hover{background:var(--cyan-main);color:#0e1b2a}
+
+        /* ---------- Features ---------- */
+        .features{
+            display:flex;flex-wrap:wrap;gap:28px;justify-content:center;
+            padding:65px 8%;
+        }
+        .feature-item{
+            flex:1 1 260px;max-width:310px;text-align:center;
+            background:var(--navy-700);border:2px solid transparent;
+            padding:32px 24px;border-radius:8px;transition:border .3s
+        }
+        .feature-item:hover{border-color:var(--cyan-main)}
+        .feature-item h3{font-size:20px;margin-bottom:14px;color:var(--cyan-main)}
+        .feature-item p{font-size:15px;color:#d9d9d9}
+
+        /* ---------- Footer ---------- */
+        footer{
+            background:var(--navy-800);text-align:center;padding:22px 0;
+            border-top:2px solid var(--cyan-main);
+        }
+        footer ul{display:flex;justify-content:center;gap:24px;list-style:none;margin-bottom:8px}
+        footer li a{color:#fff;font-size:14px}
+
+        /* ---------- Responsive ---------- */
+        @media (max-width:768px){
+            .features{flex-direction:column;align-items:center}
+            .feature-item{max-width:82%}
+        }
+    </style>
+</head>
+<body>
+<!-- ===== Header ===== -->
+<header>
+    <div class="logo-box">
+        <img src="{% static 'logo/op.jpg' %}" alt="لوگو">
+        <h1>ستاره شمالی</h1>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="#">ثبت‌نام</a></li>
+            <li><a href="{% url 'login' %}">ورود</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- ===== Hero ===== -->
+<section class="hero">
+    <h2>به پروژه&nbsp;ستاره&nbsp;شمالی خوش&nbsp;آمدید</h2>
+    <p>سامانهٔ مدیریت ناوگان هواپیماها با دسترسی مطمئن و گزارش‌های هوشمند.</p>
+    <a class="cta-btn" href="{% url 'request_register' %}">شروع کنید</a>
+</section>
+<!-- ===== Features ===== -->
+<section class="features">
+    <div class="feature-item">
+        <h3>مدیریت ناوگان</h3>
+        <p>جزئیات کامل هواپیماها را فقط با چند کلیک به‌روز کنید.</p>
+    </div>
+    <div class="feature-item">
+        <h3>گزارش‌های رنگی</h3>
+        <p>چرخه‌ها و Overhaul را به‌شکل بصری و واضح ببینید.</p>
+    </div>
+    <div class="feature-item">
+        <h3>دسترسی تفکیک‌شده</h3>
+        <p>هر کاربر دادهٔ خودش را می‌بیند؛ شما به همه چیز دسترسی دارید.</p>
+    </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer>
+    <ul>
+        <li><a href="#">درباره ما</a></li>
+        <li><a href="#">تماس</a></li>
+        <li><a href="#">قوانین</a></li>
+    </ul>
+    <p>© {{ now|date:"Y" }} North Star</p>
+</footer>
+</body>
+</html>

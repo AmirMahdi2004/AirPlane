@@ -1,0 +1,247 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>{% if is_edit %}ویرایش کاربر{% else %}افزودن کاربر{% endif %}</h1>-->
+<!--<form method="post">-->
+<!--    {% csrf_token %}-->
+<!--    {{ form.as_p }}-->
+<!--    <button type="submit">{% if is_edit %}بروزرسانی{% else %}ایجاد{% endif %}</button>-->
+<!--</form>-->
+<!--<a href="{% url 'user_list' %}">بازگشت به لیست کاربران</a>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <title>فرم کاربر</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400&family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; direction: rtl; }
+
+    html {
+      background: #000;
+      font-size: 10px;
+      height: 100%;
+      text-align: center;
+    }
+
+    body {
+      font-family: 'Cabin', sans-serif;
+      color: white;
+      padding: 0;
+      margin: 0;
+    }
+
+    h1 {
+      animation: text-glow 2s ease-out infinite alternate;
+      font-family: 'Ubuntu', sans-serif;
+      color: #74ebe6;
+      font-size: 3rem;
+      margin-top: 30px;
+    }
+
+    .form-container {
+      animation: form-entry 2s ease-in-out;
+      background: #111;
+      border: 4px solid #74ebe6;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 30px;
+      text-align: right;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      font-size: 1.4rem;
+      margin-bottom: 5px;
+      color: #74ebe6;
+    }
+
+    input[type="text"], input[type="email"], input[type="password"], input[type="tel"], select {
+      width: 100%;
+      height: 35px;
+      background: #222;
+      border: 1px solid #444;
+      border-radius: 5px;
+      padding: 5px 10px;
+      color: #fff;
+      font-size: 1.4rem;
+    }
+
+    input:focus, select:focus {
+      background: #0B4252;
+      border-color: #00fffc;
+      box-shadow: 0 0 5px rgba(0, 255, 253, 0.2), inset 0 0 5px rgba(0, 255, 253, 0.1);
+      outline: none;
+    }
+
+    input[type="checkbox"] {
+      transform: scale(1.4);
+      margin-left: 8px;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    button {
+      flex: 1;
+      height: 40px;
+      background: #222;
+      border: 1px solid #444;
+      border-radius: 5px;
+      font-size: 1.4rem;
+      color: white;
+      transition: 0.4s;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0C6125;
+      color: #00fffc;
+    }
+
+    .back-btn:hover {
+      background: #7D0505;
+      color: #ff4d4d;
+    }
+
+    @keyframes form-entry {
+      0% { opacity: 0; transform: scale(0.9); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes text-glow {
+      0% { text-shadow: 0 0 10px #000; }
+      100% { text-shadow: 0 0 20px #74ebe6; }
+    }
+  </style>
+</head>
+<body>
+  <h1>✈فرم ویرایش کاربر✈</h1>
+  <div class="form-container">
+    <form id="userForm">
+      <div class="form-group">
+        <label>نام کاربری:</label>
+        <input type="text" id="username">
+      </div>
+
+      <div class="form-group">
+        <label>نام:</label>
+        <input type="text" id="first_name">
+      </div>
+
+      <div class="form-group">
+        <label>نام خانوادگی:</label>
+        <input type="text" id="last_name">
+      </div>
+
+      <div class="form-group">
+        <label>کد پرسنلی:</label>
+        <input type="text" id="personnel_code">
+      </div>
+
+      <div class="form-group">
+        <label>شماره تلفن:</label>
+        <input type="tel" id="phone">
+      </div>
+
+      <div class="form-group">
+        <label>سمت:</label>
+        <input type="text" id="position">
+      </div>
+
+      <div class="form-group">
+        <label>شیفت کاری:</label>
+        <select id="shift">
+          <option>صبح</option>
+          <option>عصر</option>
+          <option>شب</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>ایمیل:</label>
+        <input type="email" id="email">
+      </div>
+
+      <div class="form-group">
+        <label>سطح دسترسی:</label>
+        <select id="access_level">
+          <option>کاربر عادی</option>
+          <option>مدیر</option>
+          <option>سوپر ادمین</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>پسورد:</label>
+        <input type="password" id="password">
+      </div>
+
+      <div class="form-group">
+        <label>تایید پسورد:</label>
+        <input type="password" id="confirm_password">
+      </div>
+<div class="form-group">
+        <label>
+          <input type="checkbox" id="is_active"> فعال باشد
+        </label>
+      </div>
+
+      <div class="button-group">
+        <button type="button" onclick="saveUser()">ذخیره</button>
+        <button type="button" onclick="updateUser()">بروزرسانی</button>
+        <button type="button" class="back-btn" onclick="goBack()"> بازگشت به لیست کارکنان</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function getFormData() {
+      return {
+        username: document.getElementById("username").value,
+        first_name: document.getElementById("first_name").value,
+        last_name: document.getElementById("last_name").value,
+        personnel_code: document.getElementById("personnel_code").value,
+        phone: document.getElementById("phone").value,
+        position: document.getElementById("position").value,
+        shift: document.getElementById("shift").value,
+        email: document.getElementById("email").value,
+        access_level: document.getElementById("access_level").value,
+        password: document.getElementById("password").value,
+        confirm_password: document.getElementById("confirm_password").value,
+        is_active: document.getElementById("is_active").checked
+      };
+    }
+
+    function saveUser() {
+      console.log("ذخیره کاربر:", getFormData());
+      alert("کاربر ذخیره شد");
+    }
+
+    function updateUser() {
+      console.log("بروزرسانی کاربر:", getFormData());
+      alert("اطلاعات کاربر بروزرسانی شد");
+    }
+
+    function goBack() {
+      window.location.href = "users_list.html"; // مسیر لیست کاربران
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>FLT FORM</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<form method="post">-->
+<!--    {% csrf_token %}-->
+<!--    {{ form.as_p }}-->
+<!--    <button type="submit">send</button>-->
+<!--</form>-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Aircraft Data Form</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #9effff;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #00ffcc;
+    }
+    form {
+      max-width: 600px;
+      margin: auto;
+      background: #111;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,255,255,0.4);
+    }
+    label {
+      display: block;
+      margin-top: 12px;
+      font-weight: bold;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 4px;
+      background: #000;
+      border: 1px solid #00ffcc;
+      border-radius: 6px;
+      color: #9effff;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background: #00ffcc;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #00ffaa;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Aircraft Data Entry</h1>
+<form>
+  <label>Airplane:</label>
+  <input type="text" name="Airplane">
+
+  <label>Date:</label>
+  <input type="date" name="Date">
+
+  <label>ACFLtHrs:</label>
+  <input type="text" name="ACFLtHrs">
+
+  <label>Total ACFLtHrs:</label>
+  <input type="text" name="TotalACFLtHrs">
+
+  <label>ACCyclesCSN:</label>
+  <input type="text" name="ACCyclesCSN">
+
+  <label>Total ACCyclesCSN:</label>
+  <input type="text" name="TotalACCyclesCSN">
+
+  <label>LDNG:</label>
+  <input type="text" name="LDNG">
+
+  <label>Total LDNG:</label>
+  <input type="text" name="TotalLDNG">
+
+  <label>EngNo1TimeTSN:</label>
+  <input type="text" name="EngNo1TimeTSN">
+
+  <label>Total EngNo1TimeTSN:</label>
+  <input type="text" name="TotalEngNo1TimeTSN">
+
+  <label>EngNo1CyclesCSN:</label>
+  <input type="text" name="EngNo1CyclesCSN">
+
+  <label>Total EngNo1CyclesCSN:</label>
+  <input type="text" name="TotalEngNo1CyclesCSN">
+
+  <label>EngNo2TimeTSN:</label>
+  <input type="text" name="EngNo2TimeTSN">
+
+  <label>Total EngNo2TimeTSN:</label>
+  <input type="text" name="TotalEngNo2TimeTSN">
+
+  <label>EngNo2CyclesCSN:</label>
+  <input type="text" name="EngNo2CyclesCSN">
+
+  <label>Total EngNo2CyclesCSN:</label>
+  <input type="text" name="TotalEngNo2CyclesCSN">
+
+  <label>PropNo1TimeTSN:</label>
+  <input type="text" name="PropNo1TimeTSN">
+
+  <label>Total PropNo1TimeTSN:</label>
+  <input type="text" name="TotalPropNo1TimeTSN">
+
+  <label>Total PropNo1TimeTSO:</label>
+  <input type="text" name="TotalPropNo1TimeTSO">
+
+  <label>PropNo2TimeTSN:</label>
+  <input type="text" name="PropNo2TimeTSN">
+
+  <label>Total PropNo2TimeTSN:</label>
+  <input type="text" name="TotalPropNo2TimeTSN">
+
+  <label>Total PropNo2TimeTSO:</label>
+  <input type="text" name="TotalPropNo2TimeTSO">
+
+  <button type="submit">ثبت</button>
+</form>
+
+</body>
+</html>

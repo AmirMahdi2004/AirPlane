@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Aircraft Maintenance</title>
+  <style>
+    body {
+      background-color: #000;
+      font-family: 'Segoe UI', sans-serif;
+      color: #9effff;
+      margin: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px #00f7ff;
+    }
+
+    .info-table,
+    .task-table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid #00f7ff;
+      margin-bottom: 30px;
+      background-color: #111;
+      color: #9effff;
+      font-size: 12px;
+    }
+
+    .info-table td,
+    .task-table td,
+    .task-table th {
+      border: 1px solid #00f7ff;
+      padding: 8px;
+      vertical-align: top;
+      text-align: center;
+    }
+
+    .info-table input,
+    .task-table input {
+      width: 100%;
+      padding: 6px;
+      background-color: #222;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 12px;
+    }
+
+    .task-table th {
+      background-color: #003f4f;
+    }
+
+    .task-table .sub-header {
+      font-weight: normal;
+      font-size: 11px;
+      background-color: #111;
+      color: #9effff;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>✈ NORTH STAR ✈</h1>
+
+  <div class="table-section">
+    <form>
+      <table class="info-table">
+        <tr>
+          <td>
+            <label>A/C Reg:</label><br>
+            <label>A/C Type:</label><br>
+            <label>A/C S/N:</label>
+          </td>
+          <td>
+            <label>Date:</label><br>
+            <label>A/C TSN:</label><br>
+            <label>A/C CSN:</label><br>
+            <label>LDNG:</label>
+          </td>
+          <td>
+            <label>Eng. No.1 Model:</label><br>
+            <label>S/N:</label><br>
+            <label>TSN:</label><br>
+            <label>CSN:</label>
+          </td>
+          <td>
+            <label>Eng. No.2 Model:</label><br>
+            <label>S/N:</label><br>
+            <label>TSN:</label><br>
+            <label>CSN:</label>
+          </td>
+          <td>
+            <label>Prop. No.1 Model:</label><br>
+            <label>S/N:</label><br>
+            <label>TSN:</label><br>
+            <label>TSO:</label>
+          </td>
+          <td>
+            <label>Prop. No.2 Model:</label><br>
+            <label>S/N:</label><br>
+            <label>TSN:</label><br>
+            <label>TSO:</label>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+
+  <!-- جدول وظایف (Tasks Table) -->
+  <table class="task-table">
+    <tr>
+
+      <th rowspan="2">No.</th>
+      <th rowspan="2">Task Description</th>
+      <th rowspan="2">Source</th>
+      <th rowspan="2">Part No.</th>
+      <th rowspan="2">Serial No.</th>
+      <th colspan="5">Last Done</th>
+      <th colspan="5">Life Time</th>
+      <th colspan="5">Next Due</th>
+      <th colspan="5">Remain</th>
+      <th rowspan="2"> Remark</th>
+    </tr>
+    <tr class="sub-header">
+      <td>Time</td>
+      <td>Date</td>
+      <td>A/C Cycle</td>
+      <td>LDNG</td>
+      <td>ENC</td>
+      <td>Time</td>
+      <td>Days</td>
+      <td>A/C Cycle</td>
+      <td>LDNG</td>
+      <td>ENC</td>
+      <td>A/C Time</td>
+      <td>Date</td>
+      <td>A/C Cycle</td>
+      <td>LDNG</td>
+      <td>ENC</td>
+      <td>Hours</td>
+      <td>Days</td>
+      <td>A/C Cycle</td>
+      <td>LDNG</td>
+      <td>ENC</td>
+    </tr>
+    <tr>
+      <td height="94"></td>
+        {% for air in mp %}
+      <td>{{ air.No}}</td>
+      <td>{{ air.Description}</td>
+      <td>{{ air.Source}</td>
+      <td>{{ air.INIHours}</td>
+
+      <td>{{ air.No}</td>
+      <td>{{ air.No}</td>
+      <td>{{ air.No} </td>
+      <td>{{ air.No}</td>
+      <td>{{ air.No}</td>
+
+      <td>{{ air.No}</td>
+      <td>{{ air.No}</td>
+      <td>{{ air.No}</td>
+      <td>{{ air.No}</td>
+      <td>{{ air.No}</td>
+
+      <td>{{ air.No}</td>
+      <td>{{ air.No}</td>
+      <td>{{ air.No}</td>
+      <td>{{ air.No}</td>
+      <td>{{ air.No}</td>
+
+      <td>{{ air.No}</td>
+      <td>{{ air.No}</td>
+      <td>{{ air.No}</td>
+      <td>{{ air.No}</td>
+      <td>{{ air.No}</td>
+
+      <td>{{ air.No}</td>
+        {% endfor %}
+    </tr>
+  </table>
+
+  </div>
+</body>
+
+</html>

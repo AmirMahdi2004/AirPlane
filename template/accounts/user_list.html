@@ -1,0 +1,174 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>user list</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--Hello-->
+<!--{{request.user}}-->
+<!--<h2>لیست کاربران</h2>-->
+<!--<table>-->
+<!--    <tr>-->
+<!--        <th>#</th>-->
+<!--        <th>نام کاربری</th>-->
+<!--        <th>نام</th>-->
+<!--        <th>نام خانوادگی</th>-->
+<!--        <th>ایمیل</th>-->
+<!--        <th>نقش</th>-->
+<!--    <tr/>-->
+
+<!--    {% for i in userlist %}-->
+<!--    <tr>-->
+<!--        <td>{{ forloop.counter }}</td>-->
+<!--        <td>{{i.username}}</td>-->
+<!--        <td>{{i.firstname}}</td>-->
+<!--        <td>{{i.lastname}}</td>-->
+<!--        <td>{{i.email}}</td>-->
+<!--        <td>{{i.role}}</td>-->
+
+<!--        {% endfor %}-->
+
+<!--    </tr>-->
+<!--</table>-->
+<!--<a href="{% url 'logout' %}"> خارج شدن </a>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پنل مدیریت پرسنل</title>
+    <style>
+        body {
+          background-color: #000;
+          color: #9effff;
+          font-family: 'Segoe UI', sans-serif;
+          direction: rtl;
+          padding: 20px;
+        }
+
+        h1 {
+          text-align: center;
+          margin-bottom: 20px;
+          border: 2px solid #9effff;
+          display: inline-block;
+          padding: 10px 20px;
+          border-radius: 8px;
+        }
+
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          border: 2px solid #9effff;
+          text-align: center;
+        }
+
+        th, td {
+          border: 1px solid #9effff;
+          padding: 8px;
+          font-size: 14px;
+        }
+
+        th {
+          background-color: #021a1a;
+          font-weight: bold;
+        }
+
+        tr:hover {
+          background-color: rgba(158, 255, 255, 0.1);
+        }
+
+        .status-online {
+          color: #00ff99;
+          font-weight: bold;
+        }
+
+        .status-offline {
+          color: #ff5050;
+          font-weight: bold;
+        }
+
+        .access-box {
+          display: inline-block;
+          width: 18px;
+          height: 18px;
+          border: 1px solid #9effff;
+          margin: 0 2px;
+          border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>پنل مدیریت پرسنل</h1>
+
+<table>
+    <tr>
+        <th>ردیف</th>
+        <th>نام</th>
+        <th>نام خانوادگی</th>
+        <th>کد پرسنل</th>
+        <th>سمت</th>
+        <th>شیفت کاری</th>
+        <th>آخرین ورود</th>
+        <th>IP آخرین ورود</th>
+        <th>وضعیت آنلاین</th>
+        <th>سطح دسترسی</th>
+        <th>دسترسی خواندن</th>
+        <th>دسترسی حذف</th>
+        <th>دسترسی تغییر</th>
+        <th>دسترسی ساخت</th>
+        <th>وضعیت حساب</th>
+        <th>ویرایش</th>
+    </tr>
+    {% for i in userlist %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{i.first_name}}</td>
+        <td>{{i.last_name}}</td>
+        <td>{{i.personnel_code}}</td>
+        <td>{{ i.role}}</td>
+        <td>{{i.Working_hours}}</td>
+        <td>12 دقیقه قبل</td>
+        <td>192.168.1.10</td>
+        <td class="status-online">آنلاین</td>
+        <td>{{i.groups}}</td>
+        <td><span class="access-box"></span></td>
+        <td><span class="access-box"></span></td>
+        <td><span class="access-box"></span></td>
+        <td><span class="access-box"></span></td>
+        <td>{{i.is_active}}</td>
+        <td><a href="{% url 'user_edit' i.id %}">{{i.username}}</a></td>
+    </tr>
+    {% endfor %}
+
+    <!--  <tr>-->
+    <!--    <td>2</td>-->
+    <!--    <td>رضا</td>-->
+    <!--    <td>کاظمی</td>-->
+    <!--    <td>987654</td>-->
+    <!--    <td>کاربر</td>-->
+    <!--    <td>صبح</td>-->
+    <!--    <td>1 ساعت قبل</td>-->
+    <!--    <td>192.168.1.12</td>-->
+    <!--    <td class="status-offline">آفلاین</td>-->
+    <!--    <td>کاربر عادی</td>-->
+    <!--    <td><span class="access-box"></span></td>-->
+    <!--    <td><span class="access-box"></span></td>-->
+    <!--    <td><span class="access-box"></span></td>-->
+    <!--    <td><span class="access-box"></span></td>-->
+    <!--    <td>غیرفعال</td>-->
+    <!--  </tr>-->
+
+</table>
+<br>
+<a href="{% url 'user_create' %}">اضافه کردن کاربر</a>
+<br>
+<a href="#">غیر فعال کردن کاربر</a>
+<br>
+<a href="{% url 'logout' %}">خارج شدن از حساب کار بری </a>
+</body>
+</html>

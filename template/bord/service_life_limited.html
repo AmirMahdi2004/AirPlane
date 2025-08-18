@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>North Star</title>
+    <style>
+        body {
+          background-color: #000;
+          font-family: 'Segoe UI', sans-serif;
+          color: #9effff;
+          margin: 20px;
+        }
+
+        h1 {
+          text-align: center;
+          font-size: 36px;
+          margin-bottom: 10px;
+          text-shadow: 0 0 10px #00f7ff;
+        }
+
+        .info-table,
+        .task-table {
+          width: 100%;
+          border-collapse: collapse;
+          border: 1px solid #00f7ff;
+          margin-bottom: 30px;
+          background-color: #111;
+          color: #9effff;
+          font-size: 12px;
+        }
+
+        .info-table td,
+        .task-table td,
+        .task-table th {
+          border: 1px solid #00f7ff;
+          padding: 8px;
+          vertical-align: top;
+          text-align: center;
+        }
+
+        .info-table input,
+        .task-table input {
+          width: 100%;
+          padding: 6px;
+          background-color: #222;
+          border: none;
+          border-radius: 5px;
+          color: #fff;
+          font-size: 12px;
+          box-sizing: border-box;
+        }
+
+        .info-table input:focus,
+        .task-table input:focus {
+          outline: 2px solid #00f7ff;
+          background-color: #004054;
+        }
+
+        .task-table th {
+          background-color: #003f4f;
+        }
+
+        .task-table .sub-header {
+          font-weight: normal;
+          font-size: 11px;
+          background-color: #111;
+          color: #9effff;
+        }
+
+        button.submit-btn {
+          background-color: #007bff;
+          color: white;
+          border: none;
+          padding: 10px 25px;
+          font-size: 16px;
+          cursor: pointer;
+          border-radius: 5px;
+          margin-top: 15px;
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          transition: background-color 0.3s ease;
+        }
+
+        button.submit-btn:hover {
+          background-color: #0056b3;
+        }
+
+        button.add-row-btn {
+          background-color: #4caf50;
+          color: white;
+          border: none;
+          padding: 10px 25px;
+          font-size: 16px;
+          cursor: pointer;
+          border-radius: 5px;
+          margin: 0 auto 30px auto;
+          display: block;
+          transition: background-color 0.3s ease;
+        }
+
+        button.add-row-btn:hover {
+          background-color: #3a8c3a;
+        }
+    </style>
+</head>
+
+<body>
+<h1>✈ NORTH STAR ✈</h1>
+
+<div class="table-section">
+    <form>
+        <table class="info-table">
+            <tr>
+                <td>
+                    <label>A/C Reg:</label><br>
+                    <label>A/C Type:</label><br>
+                    <label>A/C S/N:</label>
+                </td>
+                <td>
+                    <label>Date:</label><br>
+                    <label>A/C TSN:</label><br>
+                    <label>A/C CSN:</label><br>
+                    <label>LDNG:</label>
+                </td>
+                <td>
+                    <label>Eng. No.1 Model:</label><br>
+                    <label>S/N:</label><br>
+                    <label>TSN:</label><br>
+                    <label>CSN:</label>
+                </td>
+                <td>
+                    <label>Eng. No.2 Model:</label><br>
+                    <label>S/N:</label><br>
+                    <label>TSN:</label><br>
+                    <label>CSN:</label>
+                </td>
+                <td>
+                    <label>Prop. No.1 Model:</label><br>
+                    <label>S/N:</label><br>
+                    <label>TSN:</label><br>
+                    <label>TSO:</label>
+                </td>
+                <td>
+                    <label>Prop. No.2 Model:</label><br>
+                    <label>S/N:</label><br>
+                    <label>TSN:</label><br>
+                    <label>TSO:</label>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<table class="task-table">
+    <thead>
+    <tr>
+        <th>No.</th>
+        <th>Task Description</th>
+        <th>Source</th>
+        <th>Part No.</th>
+        <th>Serial No.</th>
+        <th colspan="5">Last Done</th>
+        <th colspan="5">Life Time</th>
+        <th colspan="5">Next Due</th>
+        <th colspan="5">Remain</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th>Time</th>
+        <th>Date</th>
+        <th>A/C Cycle</th>
+        <th>LDNG</th>
+        <th>ENC</th>
+        <th>Time</th>
+        <th>Days</th>
+        <th>A/C Cycle</th>
+        <th>LDNG</th>
+        <th>ENC</th>
+        <th>A/C Time</th>
+        <th>Date</th>
+        <th>A/C Cycle</th>
+        <th>LDNG</th>
+        <th>ENC</th>
+        <th>Hours</th>
+        <th>Days</th>
+        <th>A/C Cycle</th>
+        <th>LDND</th>
+        <th>ENC</th>
+
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        {% for air in conditions %}
+        <td>{{ air.No }}</td>
+        <td>{{ air.TaskDescription }}</td>
+        <td>{{ air.Source }}</td>
+        <td>{{ air.PartNo }}</td>
+        <td>{{ air.SerialNo }}</td>
+        <td>{{ air.LDTime }}</td>
+        <td>{{ air.LDDate }}</td>
+        <td>{{ air.LDACCycle }}</td>
+        <td>{{ air.LDLDNG }}</td>
+        <td>{{ air.LDENC }}</td>
+        <td>{{ air.LTTime }}</td>
+        <td>{{ air.LTDate }}</td>
+        <td>{{ air.LTACCycle }}</td>
+        <td>{{ air.LTLDNG }}</td>
+        <td>{{ air.LTENC }}</td>
+        <td>{{ air.NDACTime }}</td>
+        <td>{{ air.NDDate }}</td>
+        <td>{{ air.NDACCycle }}</td>
+        <td>{{ air.NDLDNG }}</td>
+        <td>{{ air.NDENC }}</td>
+        <td>{{ air.RHours }}</td>
+        <td>{{ air.RDays }}</td>
+        <td>{{ air.RACCycle }}</td>
+        <td>{{ air.RLDNG }}</td>
+        <td>{{ air.RENC }}</td>
+        <td>{{ air.Description }}</td>
+
+
+        {% endfor %}
+    </tr>
+    </tbody>
+</table>
+
+
+<script>
+    function handleSubmit() {
+      const data = {
+        no: document.getElementById('no').value,
+        task: document.getElementById('task').value,
+        source: document.getElementById('source').value,
+        part: document.getElementById('part').value,
+        serial: document.getElementById('serial').value,
+        desc: document.getElementById('desc').value
+        // بقیه مقادیر هم می‌تونه اضافه بشه
+      };
+      console.log("اطلاعات ثبت‌شده:", data);
+      alert("اطلاعات ثبت شد!");
+    }
+</script>
+
+</body>
+
+</html>

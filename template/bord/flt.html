@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aircraft Flight Log - Neon Theme</title>
+    <style>
+        body {
+          font-family: 'Ubuntu', sans-serif;
+          background-color: #000;
+          margin: 20px;
+          color: #fff;
+        }
+
+        table {
+          border-collapse: collapse;
+          width: 100%;
+          font-size: 12px;
+          box-shadow: 0 0 10px #74ebe6;
+        }
+
+        th, td {
+          border: 1px solid #74ebe6;
+          text-align: center;
+          padding: 6px;
+        }
+
+        th {
+          background-color: #0B4252;
+          color: #74ebe6;
+          text-shadow: 0 0 5px #74ebe6;
+        }
+
+        .gray {
+          background-color: #111;
+          color: #74ebe6;
+        }
+
+        td {
+          background-color: #000;
+          color: #9effff;
+        }
+
+        h2 {
+          text-align: center;
+          color: #74ebe6;
+          font-size: 24px;
+          text-shadow: 0 0 10px #74ebe6;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Aircraft, Eng. No.1, Eng. No.2, Prop. No.1 and Prop. No.2 Flight Time</h2>
+
+<table>
+    <tr>
+        <th>Date</th>
+        <th>A/C Flt. Hrs. (TSN)</th>
+        <th>Total A/C Flt. Hrs. (TSN)</th>
+        <th>A/C Cycles (CSN)</th>
+        <th>Total A/C Cycles (CSN)</th>
+        <th>LDNG</th>
+        <th>Total LDNG</th>
+        <th>Eng. No.1 Time (TSN)</th>
+        <th>Total Eng. No.1 Time (TSN)</th>
+        <th>Eng. No.1 Cycles (CSN)</th>
+        <th>Total Eng. No.1 Cycles (CSN)</th>
+        <th>Eng. No.2 Time (TSN)</th>
+        <th>Total Eng. No.2 Time (TSN)</th>
+        <th>Eng. No.2 Cycles (CSN)</th>
+        <th>Total Eng. No.2 Cycles (CSN)</th>
+        <th>Prop. No.1 Time (TSN)</th>
+        <th>Total Prop. No.1 Time (TSN)</th>
+        <th>Total Prop. No.1 Time (TSO)</th>
+        <th>Prop. No.2 Time (TSN)</th>
+        <th>Total Prop. No.2 Time (TSN)</th>
+        <th>Total Prop. No.2 Time (TSO)</th>
+    </tr>
+
+    <!-- Example row -->
+    <tr>
+        {% for air in flt %}
+        <td>{{air.Date}}</td>
+        <td>{{air.ACFltHrs}}</td>
+        <td>{{air.TotalACFItHrs}}</td>
+        <td>{{air.ACCyclesCSN}}</td>
+        <td>{{air.TotalACCyclesCSN}}</td>
+        <td>{{air.LDNG}}</td>
+        <td>{{air.TotalLDNG}}</td>
+        <td>{{air.EngNo1TimeTSN}}</td>
+        <td>{{air.TotalEngNo1TimeTSN}}</td>
+        <td>{{air.EngNo1CyclesCSN}}</td>
+        <td>{{air.TotalEngNo1CyclesCSN}}</td>
+        <td>{{air.EngNo2TimeTSN}}</td>
+        <td>{{air.TotalEngNo2TimeTSN}}</td>
+        <td>{{air.EngNo2CyclesCSN}}</td>
+        <td>{{air.TotalEngNo2CyclesCSN}}</td>
+        <td>{{air.PropNo1TimeTSN}}</td>
+        <td>{{air.TotalPropNo1TimeTSN}}</td>
+        <td>{{air.TotalPropNo1TimeTSO}}</td>
+        <td>{{air.PropNo2TimeTSN}}</td>
+        <td>{{air.TotalPropNo2TimeTSN}}</td>
+        <td>{{air.TotalPropNo2TimeTSO}}</td>
+        {% endfor %}
+    </tr>
+</table>
+
+</body>
+</html>
