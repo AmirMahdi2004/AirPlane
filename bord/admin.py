@@ -22,3 +22,8 @@ class FltHrsAdmin(admin.ModelAdmin):
 @admin.register(MP)
 class MPAdmin(admin.ModelAdmin):
     list_display = ('airplane',)
+
+
+@admin.register(InputBord)
+class InputBordAdmin(admin.ModelAdmin):
+    list_display = ('airplane', 'date')

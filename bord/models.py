@@ -118,3 +118,10 @@ class MP(models.Model):
     REENC = models.CharField(max_length=100, blank=True, null=True)
     Remark = models.TextField(blank=True, null=True)
 
+
+class InputBord(models.Model):
+    airplane = models.OneToOneField(Airplane, on_delete=models.CASCADE)
+    date = models.DateField(auto_now_add=True)
+    AircraftFlightHours = models.IntegerField()
+    AircraftCycles = models.IntegerField()
+    Landings = models.IntegerField()

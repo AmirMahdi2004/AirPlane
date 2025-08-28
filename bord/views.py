@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .forms import FltHrsForm
+from .forms import *
 from .models import *
 
 
@@ -28,6 +28,7 @@ def mp_view(request):
     }
     return render(request, 'bord/mp_view.html', context)
 
+
 @login_required
 def flt(request):
     airplanes = Airplane.objects.all()
@@ -38,6 +39,7 @@ def flt(request):
     }
 
     return render(request, 'bord/flt.html', context)
+
 
 @login_required
 def flt_view(request):
@@ -53,3 +55,17 @@ def flt_view(request):
     }
     return render(request, 'bord/flt_form.html', context)
 
+
+@login_required
+def input_bord(request):
+    if request.method == 'POST':
+        form = InputBordForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('bord')
+    else:
+        form = InputBordForm()
+    context = {
+        'form': form,
+    }
+    return render(request, 'bord/input_bord.html', context)

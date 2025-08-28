@@ -91,7 +91,7 @@ def ticket(request):
             return redirect('home')
     else:
         form = SupportTicketForm()
-    return render(request, 'bord/ticket.html', {'form': form})
+    return render(request, 'accounts/ticket.html', {'form': form})
 
 
 def request_register(request):

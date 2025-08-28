@@ -6,5 +6,6 @@ urlpatterns = [
     path('mp/', views.mp_view, name='mp'),
     path('flt/', views.flt, name='flt'),
     path('flt_form/', views.flt_view, name='flt_form'),
+    path('input/', views.input_bord, name='input'),
 
 ]
