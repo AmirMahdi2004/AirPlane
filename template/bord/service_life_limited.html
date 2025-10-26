@@ -114,39 +114,39 @@
         <table class="info-table">
             <tr>
                 <td>
-                    <label>A/C Reg:</label><br>
-                    <label>A/C Type:</label><br>
-                    <label>A/C S/N:</label>
+                    <label>A/C Reg: {{ airplane.ACreg}} </label><br>
+                    <label>A/C Type: {{ airplane.ACtype}}</label><br>
+                    <label>A/C S/N: {{ airplane.ACSN}}</label>
                 </td>
                 <td>
-                    <label>Date:</label><br>
-                    <label>A/C TSN:</label><br>
-                    <label>A/C CSN:</label><br>
-                    <label>LDNG:</label>
+                    <label>Date: {{ airplane.Date}}</label><br>
+                    <label>A/C TSN: {{ airplane.ACTSN}}</label><br>
+                    <label>A/C CSN: {{ airplane.ACCSN}}</label><br>
+                    <label>LDNG: {{ airplane.LDNG}}</label>
                 </td>
                 <td>
-                    <label>Eng. No.1 Model:</label><br>
-                    <label>S/N:</label><br>
-                    <label>TSN:</label><br>
-                    <label>CSN:</label>
+                    <label>Eng. No.1 Model: {{ airplane.EngNo1Model}}</label><br>
+                    <label>S/N: {{ airplane.EngNo1SN}}</label><br>
+                    <label>TSN: {{ airplane.EngNo1TSN}}</label><br>
+                    <label>CSN: {{ airplane.EngNo1CSN}}</label>
                 </td>
                 <td>
-                    <label>Eng. No.2 Model:</label><br>
-                    <label>S/N:</label><br>
-                    <label>TSN:</label><br>
-                    <label>CSN:</label>
+                    <label>Eng. No.2 Model: {{ airplane.EngNo2Model}}</label><br>
+                    <label>S/N: {{ airplane.EngNo2SN}}</label><br>
+                    <label>TSN: {{ airplane.EngNo2TSN}}</label><br>
+                    <label>CSN: {{ airplane.EngNo2CSN}}</label>
                 </td>
                 <td>
-                    <label>Prop. No.1 Model:</label><br>
-                    <label>S/N:</label><br>
-                    <label>TSN:</label><br>
-                    <label>TSO:</label>
+                    <label>Prop. No.1 Model: {{ airplane.PropNo1Model}}</label><br>
+                    <label>S/N: {{ airplane.PropNo1SN}}</label><br>
+                    <label>TSN: {{ airplane.PropNo1TSN}}</label><br>
+                    <label>TSO: {{ airplane.PropNo1TSO}}</label>
                 </td>
                 <td>
-                    <label>Prop. No.2 Model:</label><br>
-                    <label>S/N:</label><br>
-                    <label>TSN:</label><br>
-                    <label>TSO:</label>
+                    <label>Prop. No.2 Model: {{ airplane.PropNo2Model}}</label><br>
+                    <label>S/N: {{ airplane.PropNo2SN}}</label><br>
+                    <label>TSN: {{ airplane.PropNo2TSN}}</label><br>
+                    <label>TSO: {{ airplane.PropNo2TSO}}</label>
                 </td>
             </tr>
         </table>
@@ -155,11 +155,11 @@
 <table class="task-table">
     <thead>
     <tr>
-        <th>No.</th>
-        <th>Task Description</th>
-        <th>Source</th>
-        <th>Part No.</th>
-        <th>Serial No.</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
         <th colspan="5">Last Done</th>
         <th colspan="5">Life Time</th>
         <th colspan="5">Next Due</th>
@@ -167,11 +167,11 @@
         <th>Description</th>
     </tr>
     <tr>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <th>No</th>
+        <th>Task Description</th>
+        <th>Source</th>
+        <th>Part No</th>
+        <th>Serial No</th>
         <th>Time</th>
         <th>Date</th>
         <th>A/C Cycle</th>
@@ -197,8 +197,9 @@
     </tr>
     </thead>
     <tbody>
+    {% for air in conditions %}
     <tr>
-        {% for air in conditions %}
+
         <td>{{ air.No }}</td>
         <td>{{ air.TaskDescription }}</td>
         <td>{{ air.Source }}</td>
@@ -227,8 +228,8 @@
         <td>{{ air.Description }}</td>
 
 
-        {% endfor %}
     </tr>
+    {% endfor %}
     </tbody>
 </table>
 

@@ -1,7 +1,19 @@
 from django import forms
 from django.forms.widgets import Input
 
-from .models import FltHrs, InputBord
+from .models import *
+
+
+class SLLForm(forms.ModelForm):
+    class Meta:
+        model = ServiceLifeLimited
+        fields = '__all__'
+
+
+class MpForm(forms.ModelForm):
+    class Meta:
+        model = MP
+        fields = '__all__'
 
 
 class FltHrsForm(forms.ModelForm):
@@ -13,4 +25,4 @@ class FltHrsForm(forms.ModelForm):
 class InputBordForm(forms.ModelForm):
     class Meta:
         model = InputBord
-        fields = ['airplane','AircraftFlightHours', 'AircraftCycles', 'Landings']
+        fields = ['airplane', 'AircraftFlightHours', 'AircraftCycles', 'Landings']

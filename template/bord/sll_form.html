@@ -1,0 +1,245 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<form method="post">-->
+<!--    {% csrf_token %}-->
+<!--    {{ form.as_p }}-->
+<!--    <button type="submit">submit</button>-->
+<!--</form>-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NORTH STAR - Service Life Limited</title>
+    <style>
+        body {
+          background-color: #000;
+          font-family: 'Segoe UI', sans-serif;
+          color: #9effff;
+          margin: 20px;
+        }
+        h1 {
+          text-align: center;
+          font-size: 32px;
+          margin-bottom: 20px;
+          text-shadow: 0 0 10px #00f7ff;
+        }
+        form {
+          max-width: 1200px;
+          margin: auto;
+          background-color: #111;
+          padding: 20px;
+          border-radius: 10px;
+          box-shadow: 0 0 15px #00f7ff;
+        }
+        label {
+          display: block;
+          margin-bottom: 5px;
+          font-size: 14px;
+        }
+        input, textarea {
+          width: 100%;
+          padding: 8px;
+          background-color: #222;
+          border: none;
+          border-radius: 5px;
+          color: #fff;
+          font-size: 14px;
+          margin-bottom: 15px;
+          box-sizing: border-box;
+        }
+        textarea {
+          min-height: 60px;
+          resize: vertical;
+        }
+        input:focus, textarea:focus {
+          outline: 2px solid #00f7ff;
+          background-color: #004054;
+        }
+        .form-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 20px;
+        }
+        button {
+          background-color: #007bff;
+          color: white;
+          border: none;
+          padding: 10px 20px;
+          font-size: 16px;
+          cursor: pointer;
+          border-radius: 8px;
+          margin-top: 15px;
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          transition: 0.3s;
+        }
+        button:hover {
+          background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<h1>✈ Service Life Limited Entry ✈</h1>
+<form method="post">
+    {% csrf_token %}
+    <div class="form-grid">
+        <div>
+            <label class="required" for="id_airplane">Airplane:</label>
+            <select name="airplane" data-context="available-source" required="" id="id_airplane">
+                <option value="" selected="">---------</option>
+                {% for airplane in airplanes %}
+                <option value="1">{{ airplane.airplane_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div> {{ form.No.error }}
+
+            <label for="no">No</label>
+            <input type="number" id="no" name="No">
+        </div>
+        <div> {{ form.TaskDescription.error }}
+
+            <label for="task">Task Description</label>
+            <textarea id="task" name="TaskDescription"></textarea>
+        </div>
+        <div> {{ form.Source.error }}
+
+            <label for="source">Source</label>
+            <textarea id="source" name="Source"></textarea>
+        </div>
+        <div> {{ form.PartNo.error }}
+
+            <label for="part">Part No.</label>
+            <input type="text" id="part" name="PartNo">
+        </div>
+        <div> {{ form.SerialNo.error }}
+
+            <label for="serial">Serial No.</label>
+            <input type="text" id="serial" name="SerialNo">
+        </div>
+
+        <!-- Last Done -->
+        <div> {{ form.LDTime.error }}
+
+            <label for="ldtime">LD Time</label>
+            <input type="number" id="ldtime" name="LDTime">
+        </div>
+        <div> {{ form.LDDate.error }}
+
+            <label for="lddate">LD Date</label>
+            <input type="date" id="lddate" name="LDDate">
+        </div>
+        <div> {{ form.LDACCycle.error }}
+
+            <label for="ldcycle">LD A/C Cycle</label>
+            <input type="number" id="ldcycle" name="LDACCycle">
+        </div>
+        <div> {{ form.LDLDNG.error }}
+
+            <label for="ldldng">LD LDNG</label>
+            <input type="number" id="ldldng" name="LDLDNG">
+        </div>
+        <div> {{ form.LDENC.error }}
+
+            <label for="ldenc">LD ENC</label>
+            <input type="text" id="ldenc" name="LDENC">
+        </div>
+
+        <!-- Life Time -->
+        <div> {{ form.LTTime.error }}
+
+            <label for="lttime">LT Time</label>
+            <input type="number" id="lttime" name="LTTime">
+        </div>
+        <div> {{ form.LTDate.error }}
+
+            <label for="ltdate">LT Date</label>
+            <input type="date" id="ltdate" name="LTDate">
+        </div>
+        <div> {{ form.LTACCycle.error }}
+
+            <label for="ltcycle">LT A/C Cycle</label>
+            <input type="number" id="ltcycle" name="LTACCycle">
+        </div>
+        <div> {{ form.LTLDNG.error }}
+
+            <label for="ltldng">LT LDNG</label>
+            <input type="number" id="ltldng" name="LTLDNG">
+        </div>
+        <div> {{ form.LTENC.error }}
+
+            <label for="ltenc">LT ENC</label>
+            <input type="text" id="ltenc" name="LTENC">
+        </div>
+
+        <!-- Next Due -->
+        <div> {{ form.NDACTime.error }}
+
+            <label for="ndtime">ND A/C Time</label>
+            <input type="number" id="ndtime" name="NDACTime">
+        </div>
+        <div> {{ form.NDDate.error }}
+
+            <label for="nddate">ND Date</label>
+            <input type="date" id="nddate" name="NDDate">
+        </div>
+        <div> {{ form.NDACCycle.error }}
+
+            <label for="ndcycle">ND A/C Cycle</label>
+            <input type="number" id="ndcycle" name="NDACCycle">
+        </div>
+        <div> {{ form.NDLDNG.error }}
+
+            <label for="ndldng">ND LDNG</label>
+            <input type="number" id="ndldng" name="NDLDNG">
+        </div>
+        <div> {{ form.NDENC.error }}
+
+            <label for="ndenc">ND ENC</label>
+            <input type="text" id="ndenc" name="NDENC">
+        </div>
+
+        <!-- Remain -->
+        <div> {{ form.RHours.error }}
+            <label for="rhrs">Remain Hours</label>
+            <input type="number" id="rhrs" name="RHours">
+        </div>
+        <div> {{ form.RDays.error }}
+
+            <label for="rdays">Remain Days</label>
+            <input type="date" id="rdays" name="RDays">
+        </div>
+        <div> {{ form.RACCycle.error }}
+
+            <label for="racc">Remain A/C Cycle</label>
+            <input type="number" id="racc" name="RACCycle">
+        </div>
+        <div> {{ form.RLDNG.error }}
+
+            <label for="rldng">Remain LDNG</label>
+            <input type="number" id="rldng" name="RLDNG">
+        </div>
+        <div> {{ form.RENC.error }}
+
+            <label for="renc">Remain ENC</label>
+            <input type="text" id="renc" name="RENC">
+        </div>
+
+        <div> {{ form.Description.error }}
+
+            <label for="desc">Description</label>
+            <input type="text" id="desc" name="Description">
+        </div>
+    </div>
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>

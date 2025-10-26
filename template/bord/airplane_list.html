@@ -1,0 +1,178 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--{% for airplane in airplanes %}-->
+<!--<a href="{{ airplane.get_mp_url }}">mp {{ airplane.airplane_name }}</a>-->
+<!--<br>-->
+<!--<a href="{{ airplane.get_sll_url }}">sll {{ airplane.airplane_name }}</a>-->
+<!--<br>-->
+<!--<a href="{{ airplane.get_flt_url }}">flt {{ airplane.airplane_name }}</a>-->
+<!--<br>-->
+<!--<br>-->
+
+<!--{% endfor %}-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>North Star - Aircrafts</title>
+    <style>
+        body {
+          margin: 0;
+          font-family: 'Segoe UI', sans-serif;
+          background-color: #000;
+          color: #9effff;
+        }
+
+        header {
+          background: #0a0a0a;
+          padding: 15px 30px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-bottom: 2px solid #00eaff;
+        }
+
+        header h1 {
+          color: #00eaff;
+          margin: 0;
+          font-size: 1.5rem;
+          letter-spacing: 2px;
+        }
+
+        nav a {
+          color: #9effff;
+          margin-left: 20px;
+          text-decoration: none;
+          transition: color 0.3s;
+        }
+
+        nav a:hover {
+          color: #00eaff;
+        }
+
+        main {
+          max-width: 900px;
+          margin: 50px auto;
+          text-align: center;
+        }
+
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-bottom: 30px;
+        }
+
+        th, td {
+          border: 1px solid #9effff;
+          padding: 12px;
+          text-align: center;
+        }
+
+        th {
+          background: #0a0a0a;
+        }
+
+        a.table-link {
+          color: #00ffaa;
+          text-decoration: none;
+          font-weight: bold;
+        }
+
+        a.table-link:hover {
+          text-shadow: 0 0 10px #00ffaa;
+        }
+
+        footer {
+          background: #0a0a0a;
+          border-top: 2px solid #00eaff;
+          color: #9effff;
+          padding: 30px 20px;
+          margin-top: 40px;
+        }
+
+        .footer-container {
+          display: flex;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          max-width: 1100px;
+          margin: auto;
+        }
+
+        .footer-col {
+          flex: 1;
+          min-width: 200px;
+          margin: 10px;
+        }
+
+        .footer-col h3 {
+          color: #00eaff;
+          margin-bottom: 15px;
+        }
+
+        .footer-col a {
+          display: block;
+          color: #9effff;
+          text-decoration: none;
+          margin: 5px 0;
+          font-size: 0.95rem;
+          transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+          color: #00eaff;
+        }
+
+        .social-links a {
+          margin-right: 15px;
+          font-size: 1.2rem;
+          text-decoration: none;
+          color: #9effff;
+          transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+          color: #00eaff;
+        }
+
+        .copyright {
+          text-align: center;
+          margin-top: 20px;
+          font-size: 0.9rem;
+          color: #7dddfc;
+        }
+    </style>
+</head>
+<body>
+<!-- Main Content -->
+<main>
+    <h2>Aircraft List</h2>
+
+    <table>
+        <tr>
+            <th>Name A/C</th>
+            <th>MP</th>
+            <th>SLL</th>
+            <th>FLT</th>
+        </tr>
+        <tr>
+            {% for airplane in airplanes %}
+            <td>Boeing 747</td>
+            <td><a href="{{ airplane.get_mp_url }}" class="table-link">MP(inspection) {{ airplane.airplane_name }}</a>
+            </td>
+            <td><a href="{{ airplane.get_sll_url }}" class="table-link">Service Life Limited {{ airplane.airplane_name
+                }}</a></td>
+            <td><a href="{{ airplane.get_flt_url }}" class="table-link">Flt Hrs {{ airplane.airplane_name }}</a></td>
+        </tr>
+        {% endfor %}
+        <!-- بک‌اند می‌تونه این ردیف‌ها رو داینامیک تولید کنه -->
+    </table>
+</main>
+</body>
+</html>

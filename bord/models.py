@@ -1,8 +1,11 @@
 from django.db import models
+from accounts.models import CustomUser
+from django.urls import reverse
 
 
 # Create your models here.
 class Airplane(models.Model):
+    owner = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     airplane_name = models.CharField(max_length=100)
     ACreg = models.CharField(max_length=100)
     ACtype = models.CharField(max_length=100)
@@ -28,12 +31,26 @@ class Airplane(models.Model):
     PropNo2TSN = models.IntegerField()
     PropNo2TSO = models.IntegerField()
 
+    def get_sll_url(self):
+        return reverse('bord:sll', args=[self.id])
+
+    def get_mp_url(self):
+        return reverse('bord:mp', args=[self.id])
+
+    def get_flt_url(self):
+        return reverse('bord:flt', args=[self.id])
+
     def __str__(self):
         return self.airplane_name
 
 
 class ServiceLifeLimited(models.Model):
-    airplane = models.OneToOneField(Airplane, on_delete=models.CASCADE)
+    IMPACT_CHOICES = (
+        ('AircraftFlightHours', 'AircraftFlightHours'),
+        ('AircraftCycles', 'AircraftCycles'),
+        ('Landings', 'Landings'),
+    )
+    airplane = models.ForeignKey(Airplane, on_delete=models.CASCADE)
     No = models.IntegerField()
     TaskDescription = models.TextField()
     Source = models.TextField()
@@ -60,10 +77,16 @@ class ServiceLifeLimited(models.Model):
     RLDNG = models.IntegerField(blank=True, null=True)
     RENC = models.CharField(max_length=100, blank=True, null=True)
     Description = models.CharField(max_length=100, blank=True, null=True)
+    impact = models.CharField(max_length=100, choices=IMPACT_CHOICES, default='AircraftFlightHours')
 
 
 class FltHrs(models.Model):
-    airplane = models.OneToOneField(Airplane, on_delete=models.CASCADE)
+    IMPACT_CHOICES = (
+        ('AircraftFlightHours', 'AircraftFlightHours'),
+        ('AircraftCycles', 'AircraftCycles'),
+        ('Landings', 'Landings'),
+    )
+    airplane = models.ForeignKey(Airplane, on_delete=models.CASCADE)
     Date = models.DateField()
     ACFltHrs = models.IntegerField()
     TotalACFItHrs = models.IntegerField()
@@ -85,10 +108,16 @@ class FltHrs(models.Model):
     PropNo2TimeTSN = models.IntegerField()
     TotalPropNo2TimeTSN = models.IntegerField()
     TotalPropNo2TimeTSO = models.IntegerField()
+    impact = models.CharField(max_length=100, choices=IMPACT_CHOICES, default='AircraftFlightHours')
 
 
 class MP(models.Model):
-    airplane = models.OneToOneField(Airplane, on_delete=models.CASCADE)
+    IMPACT_CHOICES = (
+        ('AircraftFlightHours', 'AircraftFlightHours'),
+        ('AircraftCycles', 'AircraftCycles'),
+        ('Landings', 'Landings'),
+    )
+    airplane = models.ForeignKey(Airplane, on_delete=models.CASCADE)
     No = models.CharField(max_length=20)
     Description = models.TextField()
     Source = models.TextField()
@@ -117,10 +146,11 @@ class MP(models.Model):
     RELDNG = models.IntegerField(blank=True, null=True)
     REENC = models.CharField(max_length=100, blank=True, null=True)
     Remark = models.TextField(blank=True, null=True)
+    impact = models.CharField(max_length=100, choices=IMPACT_CHOICES, default='AircraftFlightHours')
 
 
 class InputBord(models.Model):
-    airplane = models.OneToOneField(Airplane, on_delete=models.CASCADE)
+    airplane = models.ForeignKey(Airplane, on_delete=models.CASCADE)
     date = models.DateField(auto_now_add=True)
     AircraftFlightHours = models.IntegerField()
     AircraftCycles = models.IntegerField()

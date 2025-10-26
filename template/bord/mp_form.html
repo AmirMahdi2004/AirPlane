@@ -1,0 +1,257 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<form method="post">-->
+<!--    {% csrf_token %}-->
+<!--    {{ form.as_p }}-->
+<!--    <button type="submit">submit</button>-->
+<!--</form>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NORTH STAR - Maintenance Program</title>
+    <style>
+        body {
+          background-color: #000;
+          font-family: 'Segoe UI', sans-serif;
+          color: #9effff;
+          margin: 20px;
+        }
+        h1 {
+          text-align: center;
+          font-size: 32px;
+          margin-bottom: 20px;
+          text-shadow: 0 0 10px #00f7ff;
+        }
+        form {
+          max-width: 1200px;
+          margin: auto;
+          background-color: #111;
+          padding: 20px;
+          border-radius: 10px;
+          box-shadow: 0 0 15px #00f7ff;
+        }
+        label {
+          display: block;
+          margin-bottom: 5px;
+          font-size: 14px;
+        }
+        input, textarea {
+          width: 100%;
+          padding: 8px;
+          background-color: #222;
+          border: none;
+          border-radius: 5px;
+          color: #fff;
+          font-size: 14px;
+          margin-bottom: 15px;
+          box-sizing: border-box;
+        }
+        textarea {
+          min-height: 60px;
+          resize: vertical;
+        }
+        input:focus, textarea:focus {
+          outline: 2px solid #00f7ff;
+          background-color: #004054;
+        }
+        .form-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 20px;
+        }
+        button {
+          background-color: #007bff;
+          color: white;
+          border: none;
+          padding: 10px 20px;
+          font-size: 16px;
+          cursor: pointer;
+          border-radius: 8px;
+          margin-top: 15px;
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          transition: 0.3s;
+        }
+        button:hover {
+          background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<h1>✈ Maintenance Program Entry ✈</h1>
+<form method="post">
+    {% csrf_token %}
+    <div class="form-grid">
+        <div>
+            <label class="required" for="id_airplane">Airplane:</label>
+            <select name="airplane" data-context="available-source" required="" id="id_airplane">
+                <option value="" selected="">---------</option>
+                {% for airplane in airplanes %}
+                <option value="1">{{ airplane.airplane_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            {{ form.No.error }}
+            <label for="no">No</label>
+            <input type="text" id="no" name="No">
+        </div>
+        <div>
+            {{ form.Description.error }}
+            <label for="desc">Description</label>
+            <textarea id="desc" name="Description"></textarea>
+        </div>
+        <div>
+            {{ form.Source.error }}
+            <label for="source">Source</label>
+            <textarea id="source" name="Source"></textarea>
+        </div>
+
+        <!-- Initial -->
+        <div> {{ form.INIHours.error }}
+
+            <label for="inihrs">INI Hours</label>
+            <input type="number" id="inihrs" name="INIHours">
+        </div>
+        <div> {{ form.INIDays.error }}
+
+            <label for="inidays">INI Days</label>
+            <input type="number" id="inidays" name="INIDays">
+        </div>
+        <div> {{ form.INIACCycle.error }}
+
+            <label for="iniacc">INI A/C Cycle</label>
+            <input type="number" id="iniacc" name="INIACCycle">
+        </div>
+        <div> {{ form.INILDNG.error }}
+
+            <label for="inildng">INI LDNG</label>
+            <input type="number" id="inildng" name="INILDNG">
+        </div>
+
+        <!-- Interval -->
+        <div> {{ form.INTHours.error }}
+
+            <label for="inthrs">INT Hours</label>
+            <input type="number" id="inthrs" name="INTHours">
+        </div>
+        <div> {{ form.INTDays.error }}
+
+            <label for="intdays">INT Days</label>
+            <input type="number" id="intdays" name="INTDays">
+        </div>
+        <div> {{ form.INTACCycle.error }}
+
+            <label for="intacc">INT A/C Cycle</label>
+            <input type="number" id="intacc" name="INTACCycle">
+        </div>
+        <div> {{ form.INTLDNG.error }}
+
+            <label for="intldng">INT LDNG</label>
+            <input type="number" id="intldng" name="INTLDNG">
+        </div>
+        <div> {{ form.INTRENC.error }}
+
+            <label for="intenc">INT ENC</label>
+            <input type="text" id="intenc" name="INTRENC">
+        </div>
+
+        <!-- Last Done -->
+        <div> {{ form.LDHours.error }}
+
+            <label for="ldhrs">LD Hours</label>
+            <input type="number" id="ldhrs" name="LDHours">
+        </div>
+        <div> {{ form.LDDate.error }}
+
+            <label for="lddate">LD Date</label>
+            <input type="date" id="lddate" name="LDDate">
+        </div>
+        <div> {{ form.LDACCycle.error }}
+
+            <label for="ldacc">LD A/C Cycle</label>
+            <input type="number" id="ldacc" name="LDACCycle">
+        </div>
+        <div> {{ form.LDLDNG.error }}
+
+            <label for="ldldng">LD LDNG</label>
+            <input type="number" id="ldldng" name="LDLDNG">
+        </div>
+        <div> {{ form.LDENC.error }}
+
+            <label for="ldenc">LD ENC</label>
+            <input type="text" id="ldenc" name="LDENC">
+        </div>
+        <!-- Next Due -->
+        <div> {{ form.NEACTime.error }}
+
+            <label for="nehrs">NE A/C Time</label>
+            <input type="number" id="nehrs" name="NEACTime">
+        </div>
+        <div> {{ form.NEDate.error }}
+
+            <label for="nedate">NE Date</label>
+            <input type="date" id="nedate" name="NEDate">
+        </div>
+        <div> {{ form.NEACCycle.error }}
+
+            <label for="neacc">NE A/C Cycle</label>
+            <input type="number" id="neacc" name="NEACCycle">
+        </div>
+        <div> {{ form.NELDNG.error }}
+
+            <label for="neldng">NE LDNG</label>
+            <input type="number" id="neldng" name="NELDNG">
+        </div>
+        <div> {{ form.NEENC.error }}
+
+            <label for="neenc">NE ENC</label>
+            <input type="text" id="neenc" name="NEENC">
+        </div>
+
+        <!-- Remaining -->
+        <div> {{ form.REHours.error }}
+
+            <label for="rehrs">Remain Hours</label>
+            <input type="number" id="rehrs" name="REHours">
+        </div>
+        <div> {{ form.REDays.error }}
+
+            <label for="redays">Remain Days</label>
+            <input type="number" id="redays" name="REDays">
+        </div>
+        <div> {{ form.REACCycle.error }}
+
+            <label for="reacc">Remain A/C Cycle</label>
+            <input type="number" id="reacc" name="REACCycle">
+        </div>
+        <div> {{ form.RELDNG.error }}
+
+            <label for="reldng">Remain LDNG</label>
+            <input type="number" id="reldng" name="RELDNG">
+        </div>
+        <div> {{ form.REENC.error }}
+
+            <label for="reenc">Remain ENC</label>
+            <input type="text" id="reenc" name="REENC">
+        </div>
+
+        <div style="grid-column: span 2;">
+            <label for="remark">Remark</label>
+            <textarea id="remark" name="Remark"></textarea>
+        </div>
+    </div>
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>

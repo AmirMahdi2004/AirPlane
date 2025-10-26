@@ -2,190 +2,212 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Aircraft Maintenance</title>
-  <style>
-    body {
-      background-color: #000;
-      font-family: 'Segoe UI', sans-serif;
-      color: #9effff;
-      margin: 20px;
-    }
+    <meta charset="UTF-8">
+    <title>Aircraft Maintenance</title>
+    <style>
+        body {
+          background-color: #000;
+          font-family: 'Segoe UI', sans-serif;
+          color: #9effff;
+          margin: 20px;
+        }
 
-    h1 {
-      text-align: center;
-      font-size: 36px;
-      margin-bottom: 10px;
-      text-shadow: 0 0 10px #00f7ff;
-    }
+        h1 {
+          text-align: center;
+          font-size: 36px;
+          margin-bottom: 10px;
+          text-shadow: 0 0 10px #00f7ff;
+        }
 
-    .info-table,
-    .task-table {
-      width: 100%;
-      border-collapse: collapse;
-      border: 1px solid #00f7ff;
-      margin-bottom: 30px;
-      background-color: #111;
-      color: #9effff;
-      font-size: 12px;
-    }
+        .info-table,
+        .task-table {
+          width: 100%;
+          border-collapse: collapse;
+          border: 1px solid #00f7ff;
+          margin-bottom: 30px;
+          background-color: #111;
+          color: #9effff;
+          font-size: 12px;
+        }
 
-    .info-table td,
-    .task-table td,
-    .task-table th {
-      border: 1px solid #00f7ff;
-      padding: 8px;
-      vertical-align: top;
-      text-align: center;
-    }
+        .info-table td,
+        .task-table td,
+        .task-table th {
+          border: 1px solid #00f7ff;
+          padding: 8px;
+          vertical-align: top;
+          text-align: center;
+        }
 
-    .info-table input,
-    .task-table input {
-      width: 100%;
-      padding: 6px;
-      background-color: #222;
-      border: none;
-      border-radius: 5px;
-      color: #fff;
-      font-size: 12px;
-    }
+        .info-table input,
+        .task-table input {
+          width: 100%;
+          padding: 6px;
+          background-color: #222;
+          border: none;
+          border-radius: 5px;
+          color: #fff;
+          font-size: 12px;
+        }
 
-    .task-table th {
-      background-color: #003f4f;
-    }
+        .task-table th {
+          background-color: #003f4f;
+        }
 
-    .task-table .sub-header {
-      font-weight: normal;
-      font-size: 11px;
-      background-color: #111;
-      color: #9effff;
-    }
-  </style>
+        .task-table .sub-header {
+          font-weight: normal;
+          font-size: 11px;
+          background-color: #111;
+          color: #9effff;
+        }
+    </style>
 </head>
 
 <body>
 
-  <h1>✈ NORTH STAR ✈</h1>
+<h1>✈ NORTH STAR ✈</h1>
 
-  <div class="table-section">
+<div class="table-section">
     <form>
-      <table class="info-table">
-        <tr>
-          <td>
-            <label>A/C Reg:</label><br>
-            <label>A/C Type:</label><br>
-            <label>A/C S/N:</label>
-          </td>
-          <td>
-            <label>Date:</label><br>
-            <label>A/C TSN:</label><br>
-            <label>A/C CSN:</label><br>
-            <label>LDNG:</label>
-          </td>
-          <td>
-            <label>Eng. No.1 Model:</label><br>
-            <label>S/N:</label><br>
-            <label>TSN:</label><br>
-            <label>CSN:</label>
-          </td>
-          <td>
-            <label>Eng. No.2 Model:</label><br>
-            <label>S/N:</label><br>
-            <label>TSN:</label><br>
-            <label>CSN:</label>
-          </td>
-          <td>
-            <label>Prop. No.1 Model:</label><br>
-            <label>S/N:</label><br>
-            <label>TSN:</label><br>
-            <label>TSO:</label>
-          </td>
-          <td>
-            <label>Prop. No.2 Model:</label><br>
-            <label>S/N:</label><br>
-            <label>TSN:</label><br>
-            <label>TSO:</label>
-          </td>
-        </tr>
-      </table>
+        <table class="info-table">
+            <tr>
+                <td>
+                    <label>A/C Reg: {{ airplane.ACreg}} </label><br>
+                    <label>A/C Type: {{ airplane.ACtype}}</label><br>
+                    <label>A/C S/N: {{ airplane.ACSN}}</label>
+                </td>
+                <td>
+                    <label>Date: {{ airplane.Date}}</label><br>
+                    <label>A/C TSN: {{ airplane.ACTSN}}</label><br>
+                    <label>A/C CSN: {{ airplane.ACCSN}}</label><br>
+                    <label>LDNG: {{ airplane.LDNG}}</label>
+                </td>
+                <td>
+                    <label>Eng. No.1 Model: {{ airplane.EngNo1Model}}</label><br>
+                    <label>S/N: {{ airplane.EngNo1SN}}</label><br>
+                    <label>TSN: {{ airplane.EngNo1TSN}}</label><br>
+                    <label>CSN: {{ airplane.EngNo1CSN}}</label>
+                </td>
+                <td>
+                    <label>Eng. No.2 Model: {{ airplane.EngNo2Model}}</label><br>
+                    <label>S/N: {{ airplane.EngNo2SN}}</label><br>
+                    <label>TSN: {{ airplane.EngNo2TSN}}</label><br>
+                    <label>CSN: {{ airplane.EngNo2CSN}}</label>
+                </td>
+                <td>
+                    <label>Prop. No.1 Model: {{ airplane.PropNo1Model}}</label><br>
+                    <label>S/N: {{ airplane.PropNo1SN}}</label><br>
+                    <label>TSN: {{ airplane.PropNo1TSN}}</label><br>
+                    <label>TSO: {{ airplane.PropNo1TSO}}</label>
+                </td>
+                <td>
+                    <label>Prop. No.2 Model: {{ airplane.PropNo2Model}}</label><br>
+                    <label>S/N: {{ airplane.PropNo2SN}}</label><br>
+                    <label>TSN: {{ airplane.PropNo2TSN}}</label><br>
+                    <label>TSO: {{ airplane.PropNo2TSO}}</label>
+                </td>
+            </tr>
+        </table>
     </form>
-  </div>
+</div>
 
-  <!-- جدول وظایف (Tasks Table) -->
-  <table class="task-table">
+<!-- جدول وظایف (Tasks Table) -->
+<table class="task-table">
+    <thead>
     <tr>
+        <th colspan="3">Task</th>
+        <th colspan="4">INITIAL</th>
+        <th colspan="5">INTERVAL</th>
+        <th colspan="5">LAST DONE</th>
+        <th colspan="5">NEXT DUE</th>
+        <th colspan="5">REMAINING</th>
+        <th></th>
 
-      <th rowspan="2">No.</th>
-      <th rowspan="2">Task Description</th>
-      <th rowspan="2">Source</th>
-      <th rowspan="2">Part No.</th>
-      <th rowspan="2">Serial No.</th>
-      <th colspan="5">Last Done</th>
-      <th colspan="5">Life Time</th>
-      <th colspan="5">Next Due</th>
-      <th colspan="5">Remain</th>
-      <th rowspan="2"> Remark</th>
     </tr>
     <tr class="sub-header">
-      <td>Time</td>
-      <td>Date</td>
-      <td>A/C Cycle</td>
-      <td>LDNG</td>
-      <td>ENC</td>
-      <td>Time</td>
-      <td>Days</td>
-      <td>A/C Cycle</td>
-      <td>LDNG</td>
-      <td>ENC</td>
-      <td>A/C Time</td>
-      <td>Date</td>
-      <td>A/C Cycle</td>
-      <td>LDNG</td>
-      <td>ENC</td>
-      <td>Hours</td>
-      <td>Days</td>
-      <td>A/C Cycle</td>
-      <td>LDNG</td>
-      <td>ENC</td>
+        <th>No</th>
+        <th>Descrption</th>
+        <th>Source</th>
+
+        <th>Hours</th>
+        <th>Days</th>
+        <th>A/C Cycle</th>
+        <th>LDNG</th>
+
+        <th>Hours</th>
+        <th>Days</th>
+        <th>A/C Cycle</th>
+        <th>LDNG</th>
+        <th>ENC</th>
+
+        <th>Hour</th>
+        <th>Date</th>
+        <th>A/C Cycle</th>
+        <th>LDNG</th>
+        <th>ENC</th>
+
+
+        <th>A/C Time</th>
+        <th>Date</th>
+        <th>A/C Cycle</th>
+        <th>LDNG</th>
+        <th>ENC</th>
+
+
+        <th>Hour</th>
+        <th>Days</th>
+        <th>A/C Cycle</th>
+        <th>LDNG</th>
+        <th>ENC</th>
+
+        <th>Remark</th>
+
     </tr>
+    </thead>
+    <tbody>
+    {% for air in mp %}
     <tr>
-      <td height="94"></td>
-        {% for air in mp %}
-      <td>{{ air.No}}</td>
-      <td>{{ air.Description}</td>
-      <td>{{ air.Source}</td>
-      <td>{{ air.INIHours}</td>
 
-      <td>{{ air.No}</td>
-      <td>{{ air.No}</td>
-      <td>{{ air.No} </td>
-      <td>{{ air.No}</td>
-      <td>{{ air.No}</td>
+        <td>{{ air.No}}</td>
+        <td>{{ air.Description}}</td>
+        <td>{{ air.Source}}</td>
+        <td>{{ air.INIHours}}</td>
 
-      <td>{{ air.No}</td>
-      <td>{{ air.No}</td>
-      <td>{{ air.No}</td>
-      <td>{{ air.No}</td>
-      <td>{{ air.No}</td>
+        <td>{{ air.INIDays}}</td>
+        <td>{{ air.INIACCycle}}</td>
+        <td>{{ air.INILDNG}}</td>
+        <td>{{ air.INTHours}}</td>
+        <td>{{ air.INTDays}}</td>
 
-      <td>{{ air.No}</td>
-      <td>{{ air.No}</td>
-      <td>{{ air.No}</td>
-      <td>{{ air.No}</td>
-      <td>{{ air.No}</td>
+        <td>{{ air.INTACCycle}}</td>
+        <td>{{ air.INTLDNG}}</td>
+        <td>{{ air.INTRENC}}</td>
+        <td>{{ air.LDHours}}</td>
+        <td>{{ air.LDDate}}</td>
 
-      <td>{{ air.No}</td>
-      <td>{{ air.No}</td>
-      <td>{{ air.No}</td>
-      <td>{{ air.No}</td>
-      <td>{{ air.No}</td>
+        <td>{{ air.LDACCycle}}</td>
+        <td>{{ air.LDLDNG}}</td>
+        <td>{{ air.LDENC}}</td>
+        <td>{{ air.NEACTime}}</td>
+        <td>{{ air.NEDate}}</td>
 
-      <td>{{ air.No}</td>
-        {% endfor %}
+        <td>{{ air.NEACCycle}}</td>
+        <td>{{ air.NELDNG}}</td>
+        <td>{{ air.NEENC}}</td>
+        <td>{{ air.REHours}}</td>
+        <td>{{ air.REDays}}</td>
+
+        <td>{{ air.REACCycle}}</td>
+        <td>{{ air.RELDNG}}</td>
+        <td>{{ air.REENC}}</td>
+        <td>{{ air.Remark}}</td>
+
     </tr>
-  </table>
+    {% endfor %}
+    </tbody>
+</table>
 
-  </div>
+</div>
 </body>
 
 </html>

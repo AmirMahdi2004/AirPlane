@@ -15,130 +15,173 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Aircraft Data Form</title>
-  <style>
-    body {
-      background-color: #000;
-      color: #9effff;
-      font-family: 'Segoe UI', sans-serif;
-      padding: 20px;
-    }
-    h1 {
-      text-align: center;
-      color: #00ffcc;
-    }
-    form {
-      max-width: 600px;
-      margin: auto;
-      background: #111;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0,255,255,0.4);
-    }
-    label {
-      display: block;
-      margin-top: 12px;
-      font-weight: bold;
-    }
-    input {
-      width: 100%;
-      padding: 8px;
-      margin-top: 4px;
-      background: #000;
-      border: 1px solid #00ffcc;
-      border-radius: 6px;
-      color: #9effff;
-    }
-    button {
-      margin-top: 20px;
-      width: 100%;
-      padding: 12px;
-      background: #00ffcc;
-      color: #000;
-      font-weight: bold;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    button:hover {
-      background: #00ffaa;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>NORTH STAR - Flight Hours</title>
+    <style>
+        body {
+          background-color: #000;
+          font-family: 'Segoe UI', sans-serif;
+          color: #9effff;
+          margin: 20px;
+        }
+        h1 {
+          text-align: center;
+          font-size: 32px;
+          margin-bottom: 20px;
+          text-shadow: 0 0 10px #00f7ff;
+        }
+        form {
+          max-width: 1000px;
+          margin: auto;
+          background-color: #111;
+          padding: 20px;
+          border-radius: 10px;
+          box-shadow: 0 0 15px #00f7ff;
+        }
+        label {
+          display: block;
+          margin-bottom: 5px;
+          font-size: 14px;
+        }
+        input {
+          width: 100%;
+          padding: 8px;
+          background-color: #222;
+          border: none;
+          border-radius: 5px;
+          color: #fff;
+          font-size: 14px;
+          margin-bottom: 15px;
+          box-sizing: border-box;
+        }
+        input:focus {
+          outline: 2px solid #00f7ff;
+          background-color: #004054;
+        }
+        .form-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 20px;
+        }
+        button {
+          background-color: #007bff;
+          color: white;
+          border: none;
+          padding: 10px 20px;
+          font-size: 16px;
+          cursor: pointer;
+          border-radius: 8px;
+          margin-top: 15px;
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          transition: 0.3s;
+        }
+        button:hover {
+          background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-
-<h1>Aircraft Data Entry</h1>
-<form>
-  <label>Airplane:</label>
-  <input type="text" name="Airplane">
-
-  <label>Date:</label>
-  <input type="date" name="Date">
-
-  <label>ACFLtHrs:</label>
-  <input type="text" name="ACFLtHrs">
-
-  <label>Total ACFLtHrs:</label>
-  <input type="text" name="TotalACFLtHrs">
-
-  <label>ACCyclesCSN:</label>
-  <input type="text" name="ACCyclesCSN">
-
-  <label>Total ACCyclesCSN:</label>
-  <input type="text" name="TotalACCyclesCSN">
-
-  <label>LDNG:</label>
-  <input type="text" name="LDNG">
-
-  <label>Total LDNG:</label>
-  <input type="text" name="TotalLDNG">
-
-  <label>EngNo1TimeTSN:</label>
-  <input type="text" name="EngNo1TimeTSN">
-
-  <label>Total EngNo1TimeTSN:</label>
-  <input type="text" name="TotalEngNo1TimeTSN">
-
-  <label>EngNo1CyclesCSN:</label>
-  <input type="text" name="EngNo1CyclesCSN">
-
-  <label>Total EngNo1CyclesCSN:</label>
-  <input type="text" name="TotalEngNo1CyclesCSN">
-
-  <label>EngNo2TimeTSN:</label>
-  <input type="text" name="EngNo2TimeTSN">
-
-  <label>Total EngNo2TimeTSN:</label>
-  <input type="text" name="TotalEngNo2TimeTSN">
-
-  <label>EngNo2CyclesCSN:</label>
-  <input type="text" name="EngNo2CyclesCSN">
-
-  <label>Total EngNo2CyclesCSN:</label>
-  <input type="text" name="TotalEngNo2CyclesCSN">
-
-  <label>PropNo1TimeTSN:</label>
-  <input type="text" name="PropNo1TimeTSN">
-
-  <label>Total PropNo1TimeTSN:</label>
-  <input type="text" name="TotalPropNo1TimeTSN">
-
-  <label>Total PropNo1TimeTSO:</label>
-  <input type="text" name="TotalPropNo1TimeTSO">
-
-  <label>PropNo2TimeTSN:</label>
-  <input type="text" name="PropNo2TimeTSN">
-
-  <label>Total PropNo2TimeTSN:</label>
-  <input type="text" name="TotalPropNo2TimeTSN">
-
-  <label>Total PropNo2TimeTSO:</label>
-  <input type="text" name="TotalPropNo2TimeTSO">
-
-  <button type="submit">ثبت</button>
+<h1>✈ Flight Hours Entry ✈</h1>
+<form method="post">
+    {% csrf_token %}
+    <div class="form-grid">
+        <div>
+            <label class="required" for="id_airplane">Airplane:</label>
+            <select name="airplane" data-context="available-source" required="" id="id_airplane">
+                <option value="" selected="">---------</option>
+                {% for airplane in airplanes %}
+                <option value="1">{{ airplane.airplane_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div> {{ form.Date.error }}
+            <label for="date">Date</label>
+            <input type="date" id="date" name="Date">
+        </div>
+        <div> {{ form.ACFltHrs.error }}
+            <label for="acf">A/C Flight Hours</label>
+            <input type="number" id="acf" name="ACFltHrs">
+        </div>
+        <div> {{ form.TotalACFItHrs.error }}
+            <label for="tacf">Total A/C Flight Hours</label>
+            <input type="number" id="tacf" name="TotalACFItHrs">
+        </div>
+        <div> {{ form.ACCyclesCSN.error }}
+            <label for="cycle">A/C Cycles CSN</label>
+            <input type="number" id="cycle" name="ACCyclesCSN">
+        </div>
+        <div> {{ form.TotalACCyclesCSN.error }}
+            <label for="tcycle">Total A/C Cycles CSN</label>
+            <input type="number" id="tcycle" name="TotalACCyclesCSN">
+        </div>
+        <div> {{ form.LDNG.error }}
+            <label for="ldng">Landing (LDNG)</label>
+            <input type="number" id="ldng" name="LDNG">
+        </div>
+        <div> {{ form.TotalLDNG.error }}
+            <label for="tldng">Total Landing</label>
+            <input type="number" id="tldng" name="TotalLDNG">
+        </div>
+        <div> {{ form.EngNo1TimeTSN.error }}
+            <label for="eng1tsn">Eng No.1 Time TSN</label>
+            <input type="number" id="eng1tsn" name="EngNo1TimeTSN">
+        </div>
+        <div> {{ form.TotalEngNo1TimeTSN.error }}
+            <label for="teng1tsn">Total Eng No.1 TSN</label>
+            <input type="number" id="teng1tsn" name="TotalEngNo1TimeTSN">
+        </div>
+        <div> {{ form.EngNo1CyclesCSN.error }}
+            <label for="eng1csn">Eng No.1 Cycles CSN</label>
+            <input type="number" id="eng1csn" name="EngNo1CyclesCSN">
+        </div>
+        <div> {{ form.TotalEngNo1CyclesCSN.error }}
+            <label for="teng1csn">Total Eng No.1 Cycles</label>
+            <input type="number" id="teng1csn" name="TotalEngNo1CyclesCSN">
+        </div>
+        <div> {{ form.EngNo2TimeTSN.error }}
+            <label for="eng2tsn">Eng No.2 Time TSN</label>
+            <input type="number" id="eng2tsn" name="EngNo2TimeTSN">
+        </div>
+        <div> {{ form.TotalEngNo2TimeTSN.error }}
+            <label for="teng2tsn">Total Eng No.2 TSN</label>
+            <input type="number" id="teng2tsn" name="TotalEngNo2TimeTSN">
+        </div>
+        <div> {{ form.EngNo2CyclesCSN.error }}
+            <label for="eng2csn">Eng No.2 Cycles CSN</label>
+            <input type="number" id="eng2csn" name="EngNo2CyclesCSN">
+        </div>
+        <div> {{ form.TotalEngNo2CyclesCSN.error }}
+            <label for="teng2csn">Total Eng No.2 Cycles</label>
+            <input type="number" id="teng2csn" name="TotalEngNo2CyclesCSN">
+        </div>
+        <div> {{ form.PropNo1TimeTSN.error }}
+            <label for="prop1tsn">Prop No.1 Time TSN</label>
+            <input type="number" id="prop1tsn" name="PropNo1TimeTSN">
+        </div>
+        <div> {{ form.TotalPropNo1TimeTSN.error }}
+            <label for="tprop1tsn">Total Prop No.1 TSN</label>
+            <input type="number" id="tprop1tsn" name="TotalPropNo1TimeTSN">
+        </div>
+        <div> {{ form.TotalPropNo1TimeTSO.error }}
+            <label for="tprop1tso">Total Prop No.1 TSO</label>
+            <input type="number" id="tprop1tso" name="TotalPropNo1TimeTSO">
+        </div>
+        <div> {{ form.PropNo2TimeTSN.error }}
+            <label for="prop2tsn">Prop No.2 Time TSN</label>
+            <input type="number" id="prop2tsn" name="PropNo2TimeTSN">
+        </div>
+        <div> {{ form.TotalPropNo2TimeTSN.error }}
+            <label for="tprop2tsn">Total Prop No.2 TSN</label>
+            <input type="number" id="tprop2tsn" name="TotalPropNo2TimeTSN">
+        </div>
+        <div> {{ form.TotalPropNo2TimeTSO.error }}
+            <label for="tprop2tso">Total Prop No.2 TSO</label>
+            <input type="number" id="tprop2tso" name="TotalPropNo2TimeTSO">
+        </div>
+    </div>
+    <button type="submit">Submit</button>
 </form>
-
 </body>
 </html>
